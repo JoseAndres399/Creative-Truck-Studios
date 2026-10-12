@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Truck Studios | Publicidad Visual y Edición Automotriz</title>
+    <meta name="description" content="Estudio de publicidad visual especializado en posters, edits en video para vehículos y camiones, campañas y adaptación de piezas comerciales.">
+    
+    <!-- Google Fonts: Manrope & DM Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- SISTEMA DE DISEÑO Y VARIABLES (Emil Kowalski Design Philosophy) --- */
+        :root {
+            --bg-color: #FFFFFF;
+            --text-color: #111111;
+            --accent-color: #20C878;
+            --accent-hover: #1bb36b;
+            --surface-color: #FAFAFA;
+            --border-color: #E5E5E5;
+            --border-dark: #333333;
+            
+            --font-primary: 'Manrope', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            
+            /* Curvas de aceleración pulidas */
+            --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+            --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+            
+            --transition-smooth: transform 250ms var(--ease-out), opacity 250ms var(--ease-out), background-color 200ms var(--ease-out), color 200ms var(--ease-out), border-color 200ms var(--ease-out), box-shadow 300ms var(--ease-out);
+            
+            --container-max: 1280px;
+            --section-padding: clamp(4rem, 8vw, 8rem);
+        }
+
+        /* --- RESET Y ESTILOS BASE --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        img, video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 clamp(1.5rem, 4vw, 3rem);
+        }
+
+        /* --- BOTONES Y COMPONENTES REUTILIZABLES CON MICRO-FEEDBACK --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 0.85rem 1.6rem;
+            font-size: 0.925rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            border-radius: 2px;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            will-change: transform;
+        }
+
+        .btn:active {
+            transform: scale(0.96);
+        }
+
+        .btn-primary {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            border: 1px solid var(--text-color);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .btn-primary:hover {
+                background-color: var(--accent-color);
+                border-color: var(--accent-color);
+                color: var(--text-color);
+                box-shadow: 0 8px 20px rgba(32, 200, 120, 0.25);
+                transform: translateY(-1px);
+            }
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--border-dark);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .btn-outline:hover {
+                border-color: var(--accent-color);
+                color: var(--accent-color);
+                transform: translateY(-1px);
+            }
+        }
+
+        .btn-whatsapp {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            border: 1px solid var(--accent-color);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .btn-whatsapp:hover {
+                background-color: var(--text-color);
+                color: var(--bg-color);
+                border-color: var(--text-color);
+                box-shadow: 0 8px 20px rgba(17, 17, 17, 0.2);
+                transform: translateY(-1px);
+            }
+        }
+
+        .btn-kofi {
+            background-color: #29abe0;
+            color: #FFFFFF;
+            border: 1px solid #29abe0;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .btn-kofi:hover {
+                background-color: #208cb8;
+                border-color: #208cb8;
+                box-shadow: 0 8px 20px rgba(41, 171, 224, 0.25);
+                transform: translateY(-1px);
+            }
+        }
+
+        #whatsapp-notice {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 1rem 1.5rem;
+            font-size: 0.875rem;
+            z-index: 1000;
+            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: none;
+            max-width: 320px;
+            animation: slideIn 300ms var(--ease-out) forwards;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 900;
+            width: 100%;
+            transition: box-shadow 300ms var(--ease-out);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.05rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            transition: opacity 200ms var(--ease-out);
+        }
+
+        .logo:hover {
+            opacity: 0.75;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-size: 0.925rem;
+            font-weight: 500;
+            color: var(--text-color);
+            transition: color 200ms var(--ease-out);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 250ms var(--ease-out);
+        }
+
+        .nav-link:hover::after, .nav-link:focus::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 950;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-color);
+            transition: var(--transition-smooth);
+        }
+
+        /* --- HERO PRINCIPAL --- */
+        .hero {
+            padding: var(--section-padding) 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent-color);
+            background-color: rgba(32, 200, 120, 0.1);
+            padding: 0.35rem 0.75rem;
+            align-self: flex-start;
+            border-radius: 2px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.75rem, 5vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+            color: #555555;
+            max-width: 36ch;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .hero-visual {
+            position: relative;
+            width: 100%;
+            max-height: 650px;
+            border: 1px solid var(--border-color);
+            background-color: #0d0d0d;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            border-radius: 4px;
+            transition: box-shadow 300ms var(--ease-out);
+        }
+
+        .hero-visual:hover {
+            box-shadow: 0 24px 48px rgba(0,0,0,0.12);
+        }
+
+        .hero-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #111;
+            transition: transform 500ms var(--ease-out);
+        }
+
+        .hero-visual:hover img {
+            transform: scale(1.02);
+        }
+
+        /* --- GALERÍA / PORTAFOLIO --- */
+        .portfolio {
+            padding: var(--section-padding) 0;
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            max-width: 700px;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #777;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2.25rem, 3.5vw, 3.25rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background-color: #0A0A0A;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
+            transition: transform 300ms var(--ease-out), border-color 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+            display: flex;
+            flex-direction: column;
+            will-change: transform;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .portfolio-item:hover {
+                border-color: var(--accent-color);
+                transform: translateY(-6px);
+                box-shadow: 0 16px 36px rgba(0, 0, 0, 0.14);
+            }
+        }
+
+        .portfolio-media {
+            position: relative;
+            width: 100%;
+            height: 480px;
+            background-color: #0F0F0F;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .portfolio-media img, 
+        .portfolio-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 0.5rem;
+            transition: transform 500ms var(--ease-out);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .portfolio-item:hover .portfolio-media img,
+            .portfolio-item:hover .portfolio-media video {
+                transform: scale(1.03);
+            }
+        }
+
+        /* Slider para Vehículos */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 400ms var(--ease-out);
+        }
+
+        .slider-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.65);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: transform 200ms var(--ease-out), background-color 200ms var(--ease-out), color 200ms var(--ease-out);
+        }
+
+        .slider-btn:active {
+            transform: translateY(-50%) scale(0.92);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .slider-btn:hover {
+                background: var(--accent-color);
+                color: #000;
+                border-color: var(--accent-color);
+            }
+        }
+
+        .slider-btn.prev { left: 12px; }
+        .slider-btn.next { right: 12px; }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 10;
+        }
+
+        .slider-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .slider-dot.active {
+            background: var(--accent-color);
+            width: 20px;
+            border-radius: 4px;
+        }
+
+        .portfolio-info {
+            padding: 0.9rem 1.25rem;
+            background-color: #FFFFFF;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .portfolio-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: var(--text-color);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .portfolio-tag {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--accent-color);
+            background-color: rgba(32, 200, 120, 0.12);
+            padding: 0.25rem 0.55rem;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        /* --- SECCIÓN SOBRE CREATIVE TRUCK (HISTORIA Y FUNDADOR) --- */
+        .about-studio {
+            padding: var(--section-padding) 0;
+            background-color: var(--surface-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
+        }
+
+        .about-card {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border-radius: 6px;
+            transition: transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .about-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 16px 36px rgba(0,0,0,0.08);
+            }
+        }
+
+        .about-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: var(--text-color);
+        }
+
+        .about-quote {
+            font-style: italic;
+            color: #444;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        /* --- SERVICIOS --- */
+        .services {
+            padding: var(--section-padding) 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 6px;
+            transition: transform 300ms var(--ease-out), border-color 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .service-card:hover {
+                border-color: var(--text-color);
+                transform: translateY(-5px);
+                box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
+            }
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .service-number {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            font-family: monospace;
+            letter-spacing: 0.1em;
+        }
+
+        .service-card h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .service-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-color);
+            transition: color 200ms var(--ease-out), transform 200ms var(--ease-out);
+        }
+
+        .service-action:active {
+            transform: scale(0.97);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .service-action:hover {
+                color: var(--accent-color);
+            }
+        }
+
+        .service-action svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            transition: transform 250ms var(--ease-out);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .service-action:hover svg {
+                transform: translateX(5px);
+            }
+        }
+
+        /* --- PROCESO --- */
+        .process {
+            padding: var(--section-padding) 0;
+            border-bottom: 1px solid var(--border-color);
+            background-color: #FAFAFA;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            position: relative;
+            border-radius: 6px;
+            transition: transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out), border-color 300ms var(--ease-out);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .process-step:hover {
+                transform: translateY(-4px);
+                border-color: var(--accent-color);
+                box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+            }
+        }
+
+        .process-step-num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ddd;
+            letter-spacing: -0.04em;
+            line-height: 1;
+        }
+
+        .process-step h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .process-step p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* --- BANNER COMERCIAL --- */
+        .commercial-banner {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: clamp(5rem, 10vw, 8rem) 0;
+            text-align: center;
+        }
+
+        .banner-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .banner-inner h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+        }
+
+        .banner-inner p {
+            font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+            color: #CCCCCC;
+            max-width: 45ch;
+        }
+
+        /* --- FAQ --- */
+        .faq {
+            padding: var(--section-padding) 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .faq-accordion {
+            max-width: 900px;
+            margin: 3rem auto 0 auto;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text-color);
+            cursor: pointer;
+            background: none;
+            transition: color 200ms var(--ease-out);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .faq-question:hover {
+                color: var(--accent-color);
+            }
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: transform 300ms var(--ease-out);
+        }
+
+        .faq-icon::before, .faq-icon::after {
+            content: '';
+            position: absolute;
+            background-color: currentColor;
+            transition: transform 300ms var(--ease-out);
+        }
+
+        .faq-icon::before {
+            width: 14px;
+            height: 2px;
+        }
+
+        .faq-icon::after {
+            width: 2px;
+            height: 14px;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 350ms var(--ease-out), padding 350ms var(--ease-out);
+            padding: 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding-bottom: 2rem;
+        }
+
+        .faq-answer p {
+            font-size: 1.05rem;
+            color: #555;
+            max-width: 75ch;
+            line-height: 1.6;
+        }
+
+        /* --- CONTACTO --- */
+        .contact-final {
+            padding: var(--section-padding) 0;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--surface-color);
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .contact-container h2 {
+            font-size: clamp(2.25rem, 4vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .contact-container p {
+            font-size: 1.15rem;
+            color: #555;
+            max-width: 45ch;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.25rem;
+            margin-top: 1rem;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            border-radius: 2px;
+            transition: var(--transition-smooth);
+            will-change: transform;
+        }
+
+        .social-btn:active {
+            transform: scale(0.96);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .social-btn:hover {
+                border-color: var(--accent-color);
+                color: var(--accent-color);
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+            }
+        }
+
+        .social-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 4rem 0;
+            background-color: var(--bg-color);
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            max-width: 320px;
+        }
+
+        .footer-logo {
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .footer-social-icon {
+            color: #555;
+            transition: color 200ms var(--ease-out), transform 200ms var(--ease-out);
+        }
+
+        .footer-social-icon:active {
+            transform: scale(0.9);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .footer-social-icon:hover {
+                color: var(--accent-color);
+                transform: translateY(-2px);
+            }
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-col h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #333;
+        }
+
+        .footer-col a {
+            font-size: 0.9rem;
+            color: #666;
+            transition: color 200ms var(--ease-out);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .footer-col a:hover {
+                color: var(--accent-color);
+            }
+        }
+
+        .footer-bottom {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #888;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 1024px) {
+            .hero-grid, .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .hero-visual {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-color);
+                flex-direction: column;
+                align-items: center;
+                padding: 2.5rem 0;
+                gap: 1.5rem;
+                border-bottom: 1px solid var(--border-color);
+                transform: translateY(-150%);
+                transition: transform 350ms var(--ease-out);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+            }
+
+            .header-actions .btn {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .footer-nav {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Aviso flotante para WhatsApp -->
+    <div id="whatsapp-notice" role="alert">
+        <strong>Aviso comercial:</strong> El número de WhatsApp aún no ha sido configurado.
+    </div>
+
+    <!-- SECCIÓN A: HEADER -->
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">Creative Truck Studios</a>
+            
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="#portafolio" class="nav-link">Portafolio</a></li>
+                    <li><a href="#historia" class="nav-link">Sobre Mí</a></li>
+                    <li><a href="#proceso" class="nav-link">Proceso</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="https://ko-fi.com/creativetruck" target="_blank" rel="noopener noreferrer" class="btn btn-kofi">
+                    Apoya el proyecto
+                </a>
+                <button class="btn btn-primary whatsapp-btn" data-message="Hola, quiero solicitar información sobre los servicios de publicidad visual de Creative Truck Studios.">
+                    Solicitar cotización
+                </button>
+                <button class="mobile-menu-toggle" id="menuToggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECCIÓN B: HERO PRINCIPAL -->
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <span class="hero-tag">Commercial & Automotive Visual Studio</span>
+                    <h1>Tu marca y tus vehículos merecen una publicidad que destaque.</h1>
+                    <p>Creamos piezas publicitarias impactantes, posters comerciales y edits de video especializados para vehículos, camiones y productos.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary whatsapp-btn" data-message="Hola, quiero promocionar mi producto o vehículo y me interesa conocer más sobre sus servicios.">
+                            Quiero promocionar mi proyecto
+                        </button>
+                        <a href="#portafolio" class="btn btn-outline">Explorar portafolio</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <img src="https://res.cloudinary.com/dkoskclkj/image/upload/v1791773381/nl0uuwt3cscwxedhuj34.jpg" alt="Publicidad visual de producto por Creative Truck Studios" loading="eager">
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN C: GALERÍA DESTACADA -->
+        <section class="portfolio" id="portafolio">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Portafolio Creativo</span>
+                    <h2>Publicidad que convierte productos y vehículos en protagonistas visuales.</h2>
+                    <p>Cada pieza parte de una idea visual pensada para destacar la estética, comunicar personalidad y captar la atención.</p>
+                </div>
+
+                <div class="portfolio-grid">
+                    <!-- Pieza 1: Fast Food / Pizza -->
+                    <article class="portfolio-item">
+                        <div class="portfolio-media">
+                            <img src="https://res.cloudinary.com/dkoskclkj/image/upload/v1791774514/wb9qzcdnvh2z2u9sevbk.jpg" alt="Poster de Comidas Rápidas y Pizzas" loading="lazy">
+                        </div>
+                        <div class="portfolio-info">
+                            <span class="portfolio-title">Sabor & Antojo</span>
+                            <span class="portfolio-tag">Fast Food</span>
+                        </div>
+                    </article>
+
+                    <!-- Pieza 2: Cosmética -->
+                    <article class="portfolio-item">
+                        <div class="portfolio-media">
+                            <img src="https://res.cloudinary.com/dkoskclkj/image/upload/v1791774729/fx5tzwjzvadmo7t7igf4.png" alt="Poster publicitario de cosmética" loading="lazy">
+                        </div>
+                        <div class="portfolio-info">
+                            <span class="portfolio-title">Textura & Cuidado</span>
+                            <span class="portfolio-tag">Cosmética</span>
+                        </div>
+                    </article>
+
+                    <!-- Pieza 3: Fruver & Supermercados -->
+                    <article class="portfolio-item">
+                        <div class="portfolio-media">
+                            <img src="https://res.cloudinary.com/dkoskclkj/image/upload/v1791774854/ehgtzrbevwxha9kqzgyt.png" alt="Poster para Fruver y Supermercados" loading="lazy">
+                        </div>
+                        <div class="portfolio-info">
+                            <span class="portfolio-title">Frescura & Origen</span>
+                            <span class="portfolio-tag">Fruver</span>
+                        </div>
+                    </article>
+
+                    <!-- Pieza 4: Edit de Video Automotriz (Vehículos y Camiones) -->
+                    <article class="portfolio-item">
+                        <div class="portfolio-media">
+                            <video autoplay loop muted playsinline preload="metadata">
+                                <source src="https://res.cloudinary.com/dkoskclkj/video/upload/v1791775710/y20secoblgldqdt0nbzb.mp4" type="video/mp4">
+                                Tu navegador no soporta el tag de video.
+                            </video>
+                        </div>
+                        <div class="portfolio-info">
+                            <span class="portfolio-title">Edits & Video Automotriz</span>
+                            <span class="portfolio-tag">Edit Video</span>
+                        </div>
+                    </article>
+
+                    <!-- Pieza 5: Posters para Vehículos y Camiones (Carrusel Interactivo) -->
+                    <article class="portfolio-item">
+                        <div class="portfolio-media">
+                            <div class="slider-container" id="truckSlider">
+                                <div class="slider-wrapper">
+                                    <div class="slider-slide">
+                                        <img src="https://res.cloudinary.com/dkoskclkj/image/upload/v1791772873/iphomzbm9kzfnq3gxjgo.png" alt="Poster publicitario para vehículo 1" loading="lazy">
+                                    </div>
+                                    <div class="slider-slide">
+                                        <img src="https://res.cloudinary.com/dkoskclkj/image/upload/v1791772870/jsno7dnuglcqlyut7ly0.png" alt="Poster publicitario para vehículo 2" loading="lazy">
+                                    </div>
+                                </div>
+                                <button class="slider-btn prev" aria-label="Imagen anterior">&lt;</button>
+                                <button class="slider-btn next" aria-label="Siguiente imagen">&gt;</button>
+                                <div class="slider-dots">
+                                    <span class="slider-dot active" data-index="0"></span>
+                                    <span class="slider-dot" data-index="1"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <span class="portfolio-title">Posters Vehículos & Camiones</span>
+                            <span class="portfolio-tag">Automotriz</span>
+                        </div>
+                    </article>
+
+                    <!-- Pieza 6: Licor comercial -->
+                    <article class="portfolio-item">
+                        <div class="portfolio-media">
+                            <img src="https://res.cloudinary.com/dkoskclkj/image/upload/v1791773397/vj63qucpni22pc4wppis.jpg" alt="Poster publicitario de licor comercial" loading="lazy">
+                        </div>
+                        <div class="portfolio-info">
+                            <span class="portfolio-title">Carácter & Destilación</span>
+                            <span class="portfolio-tag">Licores</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN SOBRE CREATIVE TRUCK (HISTORIA Y FUNDADOR) -->
+        <section class="about-studio" id="historia">
+            <div class="container about-grid">
+                <div class="about-content">
+                    <span class="section-tag">Nuestra Esencia</span>
+                    <h2>Pasión por los motores, la fotografía y el diseño visual.</h2>
+                    <p>Creative Truck Studios nació de una profunda fascinación por el mundo de los camiones, la dirección de arte y la producción multimedia. Fundado por <strong>José Andrés Huertas Toca</strong>, el estudio combina el rigor técnico con la sensibilidad creativa para transformar la presentación de cualquier producto o vehículo comercial.</p>
+                    <p>Cada proyecto refleja el compromiso de convertir ideas cotidianas en piezas memorables que conectan de forma genuina con las personas, respaldando cada detalle con dedicación, visión y perseverancia.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Filosofía del Estudio</h3>
+                    <p class="about-quote">"Crear contenido visual que conecte emocionalmente, mostrando la belleza en lo cotidiano y transformando cada imagen en una historia inolvidable."</p>
+                    <p style="font-size: 0.9rem; color: #666;">— José Andrés Huertas Toca, Fundador.</p>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <a href="https://www.tiktok.com/@creative_truck" target="_blank" rel="noopener noreferrer" class="social-btn">
+                            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                            TikTok
+                        </a>
+                        <a href="https://www.instagram.com/creative_truck/" target="_blank" rel="noopener noreferrer" class="social-btn">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            Instagram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN D: SERVICIOS -->
+        <section class="services" id="servicios">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Nuestros Servicios</span>
+                    <h2>Todo comienza con una excelente presentación.</h2>
+                    <p>Soluciones de publicidad visual y producción de video diseñadas para realzar el valor de productos y vehículos.</p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div>
+                            <div class="service-header">
+                                <span class="service-number">[ 01 ]</span>
+                            </div>
+                            <h3>Posters Publicitarios</h3>
+                            <p>Piezas gráficas diseñadas para destacar productos comerciales, restaurantes y negocios, fortaleciendo la imagen de marca.</p>
+                        </div>
+                        <button class="service-action whatsapp-btn" data-message="Hola, me interesa cotizar el servicio de Posters Publicitarios para mi producto.">
+                            Cotizar este servicio 
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                    </div>
+
+                    <div class="service-card">
+                        <div>
+                            <div class="service-header">
+                                <span class="service-number">[ 02 ]</span>
+                            </div>
+                            <h3>Edits & Video Automotriz</h3>
+                            <p>Servicio exclusivo de edición de video publicitario de alto impacto enfocado en vehículos, camiones y maquinaria. Transiciones dinámicas y sonorización adecuada.</p>
+                        </div>
+                        <button class="service-action whatsapp-btn" data-message="Hola, me interesa cotizar un servicio de Edit de Video Automotriz para vehículos o camiones.">
+                            Cotizar este servicio 
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                    </div>
+
+                    <div class="service-card">
+                        <div>
+                            <div class="service-header">
+                                <span class="service-number">[ 03 ]</span>
+                            </div>
+                            <h3>Posters para Vehículos y Camiones</h3>
+                            <p>Diseño y retoque publicitario especializado en la industria automotriz y de transporte pesado para resaltar el atractivo y potencia de cada máquina.</p>
+                        </div>
+                        <button class="service-action whatsapp-btn" data-message="Hola, me interesa cotizar Posters Publicitarios para Vehículos y Camiones.">
+                            Cotizar este servicio 
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                    </div>
+
+                    <div class="service-card">
+                        <div>
+                            <div class="service-header">
+                                <span class="service-number">[ 04 ]</span>
+                            </div>
+                            <h3>Adaptaciones para Redes</h3>
+                            <p>Versiones de una misma propuesta publicitaria adaptadas a los formatos ideales (Reels, Stories, Feeds) para máximo alcance comercial.</p>
+                        </div>
+                        <button class="service-action whatsapp-btn" data-message="Hola, me interesa cotizar el servicio de Adaptaciones de piezas publicitarias para redes sociales.">
+                            Cotizar este servicio 
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN E: CÓMO TRABAJAMOS -->
+        <section class="process" id="proceso">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Metodología</span>
+                    <h2>De la idea a la pieza publicitaria.</h2>
+                    <p>Un proceso de trabajo transparente, organizado y adaptado a las necesidades de tu marca o vehículo.</p>
+                </div>
+
+                <div class="process-grid">
+                    <div class="process-step">
+                        <span class="process-step-num">01</span>
+                        <h3>Nos cuentas tu idea</h3>
+                        <p>Nos explicas qué producto o vehículo quieres promocionar, cuál es tu objetivo y qué estilo buscas.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="process-step-num">02</span>
+                        <h3>Definimos la propuesta</h3>
+                        <p>Establecemos el concepto creativo, las piezas o videos necesarios, el alcance y el presupuesto.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="process-step-num">03</span>
+                        <h3>Creamos el contenido</h3>
+                        <p>Desarrollamos la propuesta visual o editamos el video aplicando el estándar creativo de la marca.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="process-step-num">04</span>
+                        <h3>Recibes tus archivos</h3>
+                        <p>Entregamos las piezas o edits finales listos para publicar en redes o medios digitales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN F: BANNER COMERCIAL -->
+        <section class="commercial-banner">
+            <div class="container banner-inner">
+                <h2>Tu próximo producto o vehículo merece una presentación épica.</h2>
+                <p>Cuéntanos tu proyecto y diseñemos una propuesta visual de alto nivel.</p>
+                <button class="btn btn-whatsapp whatsapp-btn" data-message="Hola, me gustaría conversar sobre un nuevo proyecto visual o edit para mis vehículos/productos.">
+                    Hablemos de tu proyecto
+                </button>
+            </div>
+        </section>
+
+        <!-- SECCIÓN G: PREGUNTAS FRECUENTES -->
+        <section class="faq">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin: 0 auto;">
+                    <span class="section-tag">Dudas Habituales</span>
+                    <h2>Preguntas frecuentes</h2>
+                    <p>Todo lo que necesitas saber antes de iniciar un proyecto con nosotros.</p>
+                </div>
+
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿En qué consiste el servicio de Edit para Vehículos y Camiones?</span>
+                            <span class="faq-icon"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Diseñamos y editamos videos publicitarios a partir del material audiovisual de tus camiones o autos. Aplicamos recortes dinámicos, efectos de velocidad, transiciones estilizadas y sonorización profesional.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿Qué necesito para solicitar una pieza publicitaria o edit?</span>
+                            <span class="faq-icon"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Puedes compartirnos las fotos o videos disponibles de tu producto/vehículo y explicarnos el objetivo comercial o el estilo visual que te gusta.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿Puedo solicitar varios posters para una misma marca o vehículo?</span>
+                            <span class="faq-icon"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sí. Podemos preparar paquetes de contenido con coherencia estética para campañas completas de lanzamiento o promociones.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿Cuánto cuesta un proyecto o pieza publicitaria?</span>
+                            <span class="faq-icon"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>El costo depende del tipo de formato (poster estático o edit de video), cantidad de entregables y complejidad. Escríbenos para enviarte una cotización a medida.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN H: CONTACTO FINAL -->
+        <section class="contact-final" id="contacto">
+            <div class="container contact-container">
+                <span class="section-tag">Iniciemos Conversación</span>
+                <h2>Vamos a darle una mejor presentación a tu producto o vehículo.</h2>
+                <p>Cuéntanos qué quieres promocionar y preparemos una propuesta para tu marca.</p>
+                <button class="btn btn-primary whatsapp-btn" data-message="Hola, quiero solicitar una cotización para la publicidad visual de mis productos o vehículos.">
+                    Solicitar cotización por WhatsApp
+                </button>
+                <div class="social-links">
+                    <a href="https://www.tiktok.com/@creative_truck" target="_blank" rel="noopener noreferrer" class="social-btn">
+                        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                        TikTok @creative_truck
+                    </a>
+                    <a href="https://www.instagram.com/creative_truck/" target="_blank" rel="noopener noreferrer" class="social-btn">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        Instagram @creative_truck
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- SECCIÓN I: FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <span class="footer-logo">Creative Truck Studios</span>
+                    <p>Publicidad visual y edición automotriz para productos y marcas.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.tiktok.com/@creative_truck" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="TikTok">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/creative_truck/" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-col">
+                        <h4>Navegación</h4>
+                        <a href="#servicios">Servicios</a>
+                        <a href="#portafolio">Portafolio</a>
+                        <a href="#historia">Sobre Mí</a>
+                        <a href="#proceso">Proceso</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Contacto</h4>
+                        <a href="#contacto">Solicitar Cotización</a>
+                        <a href="https://ko-fi.com/creativetruck" target="_blank" rel="noopener noreferrer">Apoya el Proyecto</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear">2026</span> Creative Truck Studios. Todos los derechos reservados.</p>
+                <p>Transformando la pasión por los motores y el diseño en piezas publicitarias inolvidables.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT DE FUNCIONALIDAD -->
+    <script>
+        const WHATSAPP_NUMBER = "573189909543"; 
+        const COMMERCIAL_EMAIL = ""; 
+        const INSTAGRAM_HANDLE = "@creative_truck"; 
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Año dinámico
+            const yearSpan = document.getElementById('currentYear');
+            if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+            // Menú móvil
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', () => {
+                    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                    menuToggle.setAttribute('aria-expanded', !isExpanded);
+                    navMenu.classList.toggle('active');
+                });
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+
+            // Acordeón FAQ
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const questionBtn = item.querySelector('.faq-question');
+                questionBtn.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                    });
+                    if (!isActive) {
+                        item.classList.add('active');
+                        questionBtn.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+
+            // Enlaces de WhatsApp
+            const whatsappButtons = document.querySelectorAll('.whatsapp-btn');
+            const noticeEl = document.getElementById('whatsapp-notice');
+            whatsappButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const defaultMsg = "Hola, quiero solicitar información sobre Creative Truck Studios.";
+                    const message = btn.getAttribute('data-message') || defaultMsg;
+
+                    if (!WHATSAPP_NUMBER || WHATSAPP_NUMBER.trim() === "") {
+                        if (noticeEl) {
+                            noticeEl.style.display = 'block';
+                            setTimeout(() => { noticeEl.style.display = 'none'; }, 4000);
+                        }
+                        return;
+                    }
+                    const encodedMessage = encodeURIComponent(message);
+                    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
+                });
+            });
+
+            // Lógica del Carrusel/Slider para Posters de Vehículos
+            const slider = document.getElementById('truckSlider');
+            if (slider) {
+                const wrapper = slider.querySelector('.slider-wrapper');
+                const prevBtn = slider.querySelector('.slider-btn.prev');
+                const nextBtn = slider.querySelector('.slider-btn.next');
+                const dots = slider.querySelectorAll('.slider-dot');
+                let currentIndex = 0;
+                const totalSlides = 2;
+
+                function updateSlider(index) {
+                    currentIndex = index;
+                    wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    dots.forEach((dot, idx) => {
+                        dot.classList.toggle('active', idx === currentIndex);
+                    });
+                }
+
+                prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const newIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                    updateSlider(newIndex);
+                });
+
+                nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const newIndex = (currentIndex + 1) % totalSlides;
+                    updateSlider(newIndex);
+                });
+
+                dots.forEach(dot => {
+                    dot.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const idx = parseInt(dot.getAttribute('data-index'));
+                        updateSlider(idx);
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
